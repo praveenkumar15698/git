@@ -1,0 +1,27 @@
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color:aliceblue;
+}
+h1 {
+    color: black;
+    }
+
+section{
+    background-color: azure;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+section{
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 400px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+    input, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Change Heading on Button Click</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#clickBtn").click(function() {
+        $("h1").text("Button Clicked");
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Welcome to jQuery</h1>
+  <button id="clickBtn">Click</button>
+</body>
+</html>
