@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Colorful Task Manager</title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f9fc;
+      margin: 30px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .tasks, .completed {
+      flex: 1;
+      min-width: 300px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #444;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      min-height: 50px;
+    }
+
+    .empty-msg {
+      color: #888;
+      font-style: italic;
+      text-align: center;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      transition: background-color 0.4s, transform 0.3s;
+    }
+
+    .task-item {
+      background-color: #007bff;
+    }
+
+    .completed-item {
+      background-color: #28a745;
+    }
+
+    button {
+      background-color: #ffc107;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #e0a800;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="tasks">
+      <h2>Tasks</h2>
+      <ul id="taskList">
+        <li class="task-item">Task 1 <button class="completeBtn">✔ Complete</button></li>
+        <li class="task-item">Task 2 <button class="completeBtn">✔ Complete</button></li>
+        <li class="task-item">Task 3 <button class="completeBtn">✔ Complete</button></li>
+      </ul>
+      <p class="empty-msg" style="display: none;">No pending tasks</p>
+    </div>
+
+    <div class="completed">
+      <h2>Completed Tasks</h2>
+      <ul id="completedList">
+        <!-- Completed tasks will appear here -->
+      </ul>
+      <p class="empty-msg" style="display: none;">No completed tasks</p>
+    </div>
+
+  </div>
+
+  <script>
+    function updateEmptyMessages() {
+      $("#taskList").children().length === 0
+        ? $(".tasks .empty-msg").show()
+        : $(".tasks .empty-msg").hide();
+
+      $("#completedList").children().length === 0
+        ? $(".completed .empty-msg").show()
+        : $(".completed .empty-msg").hide();
+    }
+
+    $(document).ready(function () {
+      updateEmptyMessages();
+
+      $(document).on('click', '.completeBtn', function () {
+        const taskText = $(this).parent().text().replace("✔ Complete", "").trim();
+        const completedItem = `<li class="completed-item">${taskText}
+          <button class="incompleteBtn">↩ Incomplete</button></li>`;
+        $("#completedList").append(completedItem);
+        $(this).parent().fadeOut(300, function () { $(this).remove(); updateEmptyMessages(); });
+      });
+
+      $(document).on('click', '.incompleteBtn', function () {
+        const taskText = $(this).parent().text().replace("↩ Incomplete", "").trim();
+        const taskItem = `<li class="task-item">${taskText}
+          <button class="completeBtn">✔ Complete</button></li>`;
+        $("#taskList").append(taskItem);
+        $(this).parent().fadeOut(300, function () { $(this).remove(); updateEmptyMessages(); });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+ 

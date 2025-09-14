@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple Task List</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #fafafa;
+      color: #222;
+    }
+    h2 {
+      margin-bottom: 15px;
+    }
+    ul#tasks {
+      list-style: none;
+      padding-left: 0;
+      max-width: 360px;
+    }
+    ul#tasks li {
+      background: #fff;
+      margin-bottom: 10px;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    ul#tasks li.completed {
+      background-color: #fff4b8; /* light yellow */
+      color: #666;
+      text-decoration: line-through;
+      border-color: #e6d854;
+    }
+    button.complete-btn {
+      background: #28a745;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 3px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button.complete-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tasks</h2>
+  <ul id="tasks">
+    <li><span>Task 1</span><button class="complete-btn">Complete</button></li>
+    <li><span>Task 2</span><button class="complete-btn">Complete</button></li>
+    <li><span>Task 3</span><button class="complete-btn">Complete</button></li>
+  </ul>
+
+  <script>
+    $(function() {
+      $('#tasks').on('click', '.complete-btn', function() {
+        const $task = $(this).closest('li');
+        $task.addClass('completed');
+        $(this).remove();
+      });
+    });
+  </script>
+
+</body>
+</html>

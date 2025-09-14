@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Task To Do List</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+      color: #333;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 26px;
+    }
+
+    p.description {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    ul#tasks {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+    }
+
+    ul#tasks li {
+      background: #fff;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    ul#tasks li:hover {
+      transform: scale(1.01);
+    }
+
+    ul#tasks li.completed {
+      background-color: #fff9c4; /* soft yellow */
+      color: #888;
+      text-decoration: line-through;
+      border-color: #f0e68c;
+    }
+
+    button.complete-btn {
+      background-color: #4caf50;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button.complete-btn:hover {
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Task To Do</h2>
+  <p class="description">These are your tasks to complete</p>
+
+  <ul id="tasks">
+    <li>
+      <span>Task 1</span>
+      <button class="complete-btn">Complete</button>
+    </li>
+    <li>
+      <span>Task 2</span>
+      <button class="complete-btn">Complete</button>
+    </li>
+    <li>
+      <span>Task 3</span>
+      <button class="complete-btn">Complete</button>
+    </li>
+  </ul>
+
+  <script>
+    $(function () {
+      $('#tasks').on('click', '.complete-btn', function () {
+        const $task = $(this).closest('li');
+        $task.addClass('completed');
+        $(this).fadeOut(200); // smooth hide effect
+      });
+    });
+  </script>
+
+</body>
+</html>
+
