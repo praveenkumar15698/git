@@ -1,0 +1,36 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Navbar styling */
+nav {
+  background-color: #0077ff;
+  padding: 12px 20px;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffdd57;
+}
+
+/* Page container */
+div {
+  padding: 20px;
+}
+
+/* Headings */
+h2 {
+  color: #0077ff;
+}
